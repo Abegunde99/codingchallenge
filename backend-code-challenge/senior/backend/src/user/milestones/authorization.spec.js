@@ -5,7 +5,6 @@ jest.mock('finale-rest', () => {
   return Object.assign({}, actual, { Errors: { ForbiddenError: Error } });
 });
 
-jest.mock('finale-rest');
 jest.mock('../../config');
 
 const authorization = require('./authorization');
@@ -17,7 +16,7 @@ const {
   },
 } = require('../../config');
 
-describe.skip('Authorization Milestone', () => {
+describe('Authorization Milestone', () => {
   const mockHeader = jest.fn();
 
   let req = null;
@@ -41,7 +40,7 @@ describe.skip('Authorization Milestone', () => {
     expect(mockHeader.mock.calls[0][0]).toEqual(X_API_KEY);
   });
 
-  test('should throw forbiden error when invalide API key', () => {
+  test('should throw forbidden error when invalid API key', () => {
     mockHeader.mockReturnValueOnce(null);
     expect(() => {
       authorization(req, res, context);
