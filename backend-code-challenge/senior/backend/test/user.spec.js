@@ -37,4 +37,25 @@ describe.skip('User Resource', () => {
       expect(res.body).toEqual([]);
     });
   });
+
+  describe('GET /users/me', () => {
+    test('should return user information for authenticated user', async () => {
+      const res = await agent.get('/users/me');
+      expect(res.statusCode).toEqual(200);
+      // expect(res.body).toHaveProperty('id');
+      // expect(res.body).toHaveProperty('slug');
+    });
+
+  });
+
+  describe('PUT /users/me', () => {
+    test('should update user information for authenticated user', async () => {
+      const updatedUserData = {name: 'Abegunde Olanrewaju' };
+      const res = await agent.put('/users/me').send(updatedUserData);
+      expect(res.statusCode).toEqual(200);
+      // expect(res.body).toHaveProperty('id');
+      // expect(res.body.name).toEqual(updatedUserData.name);
+    });
+
+  });
 });
