@@ -5,7 +5,6 @@ jest.mock('finale-rest', () => {
   return Object.assign({}, actual, { Errors: { BadRequestError: Error } });
 });
 
-jest.mock('finale-rest');
 jest.mock('../../config');
 
 const authentication = require('./authentication');
@@ -17,7 +16,7 @@ const {
   },
 } = require('../../config');
 
-describe.skip('Authentication Milestone', () => {
+describe('Authentication Milestone', () => {
   const slug = 'c2VuaW9yLWNhbmRpZGF0ZQ==';
   const mockHeader = jest.fn();
 
